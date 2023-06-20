@@ -192,7 +192,7 @@ func Read(r io.Reader, order binary.ByteOrder) ([]byte, error) {
 		return nil, ErrInvalidMessageSize
 	}
 	m := make([]byte, ln)
-	_, err = r.Read(m)
+	_, err = io.ReadFull(r, m)
 	if err != nil {
 		return nil, err
 	}
